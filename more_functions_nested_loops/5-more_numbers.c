@@ -5,25 +5,21 @@
  *
  * Return: Nothing
  */
-
 void more_numbers(void)
 {
-	int i;
-	int n;
+	int line;
+	int number;
 
-	for (i = 0; i < 10; i++)
+	for (line = 0; line < 10; line++)
 	{
-		for (n = 0; n <= 14; n++)
+		for (number = 0; number <= 14; number++)
 		{
-			if (n >= 10)
+			if (number > 9)
 			{
-				_putchar((n / 10) + '0');
-				_putchar((n % 10) + '0');
+				_putchar((number / 10) + '0');
 			}
-			else
-			{
-				_putchar(n + '0');
-			}
+
+			_putchar((number % 10) + '0');
 		}
 
 		_putchar('\n');
