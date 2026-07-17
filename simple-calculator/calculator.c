@@ -20,6 +20,25 @@ void add(void)
 }
 
 /**
+ * subtract - Subtracts two integers.
+ *
+ * Return: Nothing.
+ */
+void subtract(void)
+{
+	int num1;
+	int num2;
+
+	printf("A: ");
+	scanf("%d", &num1);
+
+	printf("B: ");
+	scanf("%d", &num2);
+
+	printf("Result: %d\n", num1 - num2);
+}
+
+/**
  * main - Entry point of the simple calculator program.
  *
  * Return: Always 0.
@@ -46,6 +65,8 @@ int main(void)
 			add();
 			break;
 		case 2:
+			subtract();
+			break;
 		case 3:
 		case 4:
 			break;
