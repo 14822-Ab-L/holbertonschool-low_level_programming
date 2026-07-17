@@ -58,6 +58,32 @@ void multiply(void)
 }
 
 /**
+ * divide - Divides two integers except 0.
+ *
+ * Return: Nothing.
+ */
+void divide(void)
+{
+	float num1;
+	float num2;
+
+	printf("A: ");
+	scanf("%f", &num1);
+
+	printf("B: ");
+	scanf("%f", &num2);
+
+	if (num2 == 0)
+	{
+		printf("Error: division by zero\n");
+	}
+	else
+	{
+		printf("Result: %.1f\n", num1 / num2);
+	}
+}
+
+/**
  * main - Entry point of the simple calculator program.
  *
  * Return: Always 0.
@@ -90,6 +116,7 @@ int main(void)
 			multiply();
 			break;
 		case 4:
+			divide();
 			break;
 
 		default:
