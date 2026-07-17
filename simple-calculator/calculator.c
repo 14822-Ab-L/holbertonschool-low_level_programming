@@ -1,6 +1,25 @@
 #include <stdio.h>
 
 /**
+ * add - Adds two integers together.
+ *
+ * Return: Nothing.
+ */
+void add(void)
+{
+	int num1;
+	int num2;
+
+	printf("A: ");
+	scanf("%d", &num1);
+
+	printf("B: ");
+	scanf("%d", &num2);
+
+	printf("Result: %d\n", num1 + num2);
+}
+
+/**
  * main - Entry point of the simple calculator program.
  *
  * Return: Always 0.
@@ -24,6 +43,8 @@ int main(void)
 		switch (option)
 		{
 		case 1:
+			add();
+			break;
 		case 2:
 		case 3:
 		case 4:
