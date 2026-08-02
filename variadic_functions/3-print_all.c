@@ -1,9 +1,9 @@
 #include "variadic_functions.h"
-#include <stdarg.h>
 #include <stdio.h>
+#include <stdarg.h>
 
 /**
- * print_char - prints a character
+ * print_char - prints char
  * @args: argument list
  *
  * Return: void
@@ -14,7 +14,7 @@ void print_char(va_list args)
 }
 
 /**
- * print_int - prints an integer
+ * print_int - prints integer
  * @args: argument list
  *
  * Return: void
@@ -25,7 +25,7 @@ void print_int(va_list args)
 }
 
 /**
- * print_float - prints a float
+ * print_float - prints float
  * @args: argument list
  *
  * Return: void
@@ -36,59 +36,56 @@ void print_float(va_list args)
 }
 
 /**
- * print_string - prints a string
+ * print_string - prints string
  * @args: argument list
  *
  * Return: void
  */
 void print_string(va_list args)
 {
-	char *str = va_arg(args, char *);
+	char *s = va_arg(args, char *);
 
-	if (str == NULL)
-		str = "(nil)";
+	if (!s)
+		s = "(nil)";
 
-	printf("%s", str);
+	printf("%s", s);
 }
 
 /**
  * print_all - prints anything
- * @format: list of types of arguments
+ * @format: list of argument types
  *
  * Return: void
  */
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	int i = 0;
-	int first = 1;
-	char *separator = ", ";
-
-	void (*functions[])(va_list) = {
-		print_char,
-		print_int,
-		print_float,
-		print_string
+	printer_t functions[] = {
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_string},
+		{NULL, NULL}
 	};
-
-	char types[] = {'c', 'i', 'f', 's'};
+	va_list args;
+	char *sep = "";
+	int i = 0;
+	int j;
 
 	va_start(args, format);
 
-	while (format != NULL && format[i] != '\0')
+	while (format && format[i])
 	{
-		int j = 0;
+		j = 0;
 
-		while (j < 4)
+		while (functions[j].symbol)
 		{
-			if (format[i] == types[j])
+			if (format[i] == functions[j].symbol[0])
 			{
-				if (first == 0)
-					printf("%s", separator);
-
-				functions[j](args);
-				first = 0;
+				printf("%s", sep);
+				functions[j].print(args);
+				sep = ", ";
 			}
+
 			j++;
 		}
 

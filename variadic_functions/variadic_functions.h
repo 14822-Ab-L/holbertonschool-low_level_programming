@@ -3,16 +3,11 @@
 
 #include <stdarg.h>
 
-/**
- * struct print_format - structure for format specifiers
- * @type: format character
- * @f: function associated with format
- */
-typedef struct print_format
+typedef struct printer
 {
-	char *type;
-	void (*f)(va_list);
-} print_format;
+	char *symbol;
+	void (*print)(va_list);
+} printer_t;
 
 void print_char(va_list args);
 void print_int(va_list args);
@@ -23,4 +18,4 @@ void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
-#endif                                                                                                                                  
+#endif
