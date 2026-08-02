@@ -2,10 +2,10 @@
 #include <string.h>
 
 /**
- * get_op_func - selects operation function
+ * get_op_func - selects the correct operation function
  * @s: operator
  *
- * Return: pointer to operation function
+ * Return: pointer to operation function, or NULL
  */
 int (*get_op_func(char *s))(int, int)
 {
@@ -18,11 +18,6 @@ int (*get_op_func(char *s))(int, int)
 		{NULL, NULL}
 	};
 	int i;
-
-	if (s == NULL)
-	{
-		return (NULL);
-	}
 
 	i = 0;
 
